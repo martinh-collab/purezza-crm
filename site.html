@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PUREZZA - Solutions de Verres Premium pour l'Hôtellerie et la Restauration</title>
+<meta name="description" content="PUREZZA : Fournisseur de verres premium pour hôtels et restaurants. Qualité supérieure, RSE, logistique optimisée.">
+
+<style>
+
+:root{
+    --blue:#2563eb;
+    --green:#16a34a;
+    --orange:#f59e0b;
+    --red:#dc2626;
+    --dark:#1e293b;
+    --light:#f8fafc;
+    --card:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    line-height:1.6;
+    color:#334155;
+}
+
+/* Header et Navigation */
+header{
+    background:linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+    color:white;
+    padding:15px 0;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 4px 6px rgba(0,0,0,0.1);
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 30px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:var(--orange);
+}
+
+.cta-button{
+    background:var(--orange);
+    color:white;
+    padding:10px 20px;
+    border-radius:5px;
+    text-decoration:none;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.cta-button:hover{
+    background:#e5890a;
+    transform:translateY(-2px);
+}
+
+/* Hero Section */
+.hero{
+    background:linear-gradient(135deg, var(--blue) 0%, #1e40af 100%);
+    color:white;
+    padding:100px 30px;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+    opacity:0.95;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.btn-primary{
+    background:white;
+    color:var(--blue);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 16px rgba(0,0,0,0.2);
+}
+
+.btn-secondary{
+    background:var(--orange);
+    color:white;
+    border:2px solid white;
+}
+
+.btn-secondary:hover{
+    background:transparent;
+    transform:translateY(-3px);
+}
+
+/* Section Produits */
+.products{
+    max-width:1200px;
+    margin:80px auto;
+    padding:0 30px;
+}
+
+.section-title{
+    font-size:36px;
+    text-align:center;
+    margin-bottom:50px;
+    color:var(--dark);
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:30px;
+    margin-bottom:60px;
+}
+
+.product-card{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 24px rgba(0,0,0,0.15);
+}
+
+.product-icon{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.product-card h3{
+    color:var(--blue);
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.product-card p{
+    color:#64748b;
+    line-height:1.8;
+}
+
+/* Section Avantages */
+.benefits{
+    background:white;
+    padding:80px 30px;
+    margin:60px 0;
+}
+
+.benefits-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:40px;
+    margin-top:40px;
+}
+
+.benefit-item{
+    text-align:center;
+}
+
+.benefit-icon{
+    width:80px;
+    height:80px;
+    background:linear-gradient(135deg, var(--blue), var(--green));
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    margin:0 auto 20px;
+}
+
+.benefit-item h3{
+    color:var(--dark);
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.benefit-item p{
+    color:#64748b;
+}
+
+/* Section Témoignages */
+.testimonials{
+    max-width:1200px;
+    margin:80px auto;
+    padding:0 30px;
+}
+
+.testimonials-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.testimonial-card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    border-left:5px solid var(--orange);
+}
+
+.stars{
+    color:var(--orange);
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.testimonial-text{
+    font-size:15px;
+    margin-bottom:20px;
+    font-style:italic;
+    color:#475569;
+}
+
+.testimonial-author{
+    font-weight:bold;
+    color:var(--dark);
+    margin-bottom:5px;
+}
+
+.testimonial-role{
+    font-size:13px;
+    color:#64748b;
+}
+
+/* Section Tarifs */
+.pricing{
+    background:#f8fafc;
+    padding:80px 30px;
+    margin:60px 0;
+}
+
+.pricing-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.pricing-card{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    text-align:center;
+    transition:.3s;
+    border:2px solid transparent;
+}
+
+.pricing-card:hover{
+    border-color:var(--blue);
+    transform:translateY(-8px);
+}
+
+.pricing-card.featured{
+    border:2px solid var(--blue);
+    transform:scale(1.05);
+}
+
+.plan-name{
+    font-size:24px;
+    font-weight:bold;
+    color:var(--dark);
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:42px;
+    color:var(--blue);
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.price-period{
+    color:#64748b;
+    margin-bottom:30px;
+    font-size:14px;
+}
+
+.pricing-features{
+    list-style:none;
+    margin-bottom:30px;
+    text-align:left;
+}
+
+.pricing-features li{
+    padding:12px 0;
+    border-bottom:1px solid #e2e8f0;
+    color:#475569;
+}
+
+.pricing-features li:before{
+    content:"✓ ";
+    color:var(--green);
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.pricing-card .btn{
+    width:100%;
+}
+
+/* Section Contact */
+.contact{
+    max-width:1200px;
+    margin:80px auto;
+    padding:0 30px;
+}
+
+.contact-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.contact-info h3{
+    color:var(--dark);
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.contact-item{
+    margin-bottom:25px;
+}
+
+.contact-item strong{
+    color:var(--blue);
+    display:block;
+    margin-bottom:5px;
+}
+
+.contact-item p{
+    color:#475569;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:var(--dark);
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    font-family:inherit;
+}
+
+.form-group textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group button{
+    width:100%;
+}
+
+/* Section Stats */
+.stats{
+    background:linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+    color:white;
+    padding:60px 30px;
+    margin:60px 0;
+}
+
+.stats-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:40px;
+    text-align:center;
+}
+
+.stat-item h2{
+    font-size:48px;
+    margin-bottom:10px;
+    color:var(--orange);
+}
+
+.stat-item p{
+    font-size:16px;
+    opacity:0.9;
+}
+
+/* Footer */
+footer{
+    background:var(--dark);
+    color:white;
+    padding:50px 30px;
+    margin-top:100px;
+}
+
+.footer-content{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:40px;
+    margin-bottom:40px;
+}
+
+.footer-section h3{
+    margin-bottom:15px;
+}
+
+.footer-section ul{
+    list-style:none;
+}
+
+.footer-section ul li{
+    margin-bottom:10px;
+}
+
+.footer-section a{
+    color:#cbd5e1;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-section a:hover{
+    color:var(--orange);
+}
+
+.footer-bottom{
+    border-top:1px solid #334155;
+    padding-top:30px;
+    text-align:center;
+    color:#94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        gap:15px;
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .contact-content{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .products-grid,
+    .benefits-grid,
+    .testimonials-grid,
+    .pricing-grid{
+        grid-template-columns:1fr;
+    }
+
+    .pricing-card.featured{
+        transform:scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header et Navigation -->
+<header>
+    <nav>
+        <div class="logo">🍷 PUREZZA</div>
+        <ul class="nav-links">
+            <li><a href="#produits">Produits</a></li>
+            <li><a href="#avantages">Avantages</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-button">Demander un Devis</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Verres Premium pour l'Hôtellerie & Restauration</h1>
+        <p>PUREZZA : Qualité supérieure, RSE engagée, logistique optimisée. Transformez l'expérience client de vos établissements.</p>
+        <div class="hero-buttons">
+            <a href="#produits" class="btn btn-primary">Voir nos Produits</a>
+            <a href="#contact" class="btn btn-secondary">Obtenir une Démo</a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Produits -->
+<section class="products" id="produits">
+    <h2 class="section-title">Notre Gamme de Produits</h2>
+    
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-icon">🥂</div>
+            <h3>Verres à Vin</h3>
+            <p>Collection complète de verres à vin blanc, rouge et rosé. Cristal transparent premium, design élégant.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon">🍾</div>
+            <h3>Verres à Champagne</h3>
+            <p>Flûtes et coupes en cristal. Parfaits pour les événements spéciaux. Finitions délicates et raffinées.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon">🍺</div>
+            <h3>Verres à Bière</h3>
+            <p>Verres spécialisés pour chaque type de bière. Améliore la présentation et le goût du produit.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon">🍹</div>
+            <h3>Verres à Cocktails</h3>
+            <p>Designs variés pour tous les types de cocktails. Margarita, Daïquiri, Mojito, et plus encore.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon">☕</div>
+            <h3>Verres à Café/Thé</h3>
+            <p>Verres elegants pour café, thé, chocolat. Résistant à la chaleur avec design contemporain.</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon">💧</div>
+            <h3>Verres d'Eau</h3>
+            <p>Verres de tous les jours. Cristal clair, durable, hygiénique. Disponibles en plusieurs formats.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Section Avantages -->
+<section class="benefits" id="avantages">
+    <div class="benefits-container">
+        <h2 class="section-title">Pourquoi Choisir PUREZZA ?</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <h3>Réduction des Coûts</h3>
+                <p>Économies significatives sur vos dépenses en verres. Tarification compétitive et volume.</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon">🌱</div>
+                <h3>Démarche RSE</h3>
+                <p>Verres recyclables et processus de production éco-responsable. Engagés pour l'environnement.</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon">😊</div>
+                <h3>Expérience Client</h3>
+                <p>Verres premium améliorent la perception de qualité. Clients satisfaits et fidèles.</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon">🚚</div>
+                <h3>Logistique Optimisée</h3>
+                <p>Livraison rapide et fiable. Gestion des stocks simplifiée avec notre système de suivi.</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon">⭐</div>
+                <h3>Qualité Premium</h3>
+                <p>Cristal de haute qualité, résistant aux chocs. Garantie de durabilité et d'élégance.</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon">🤝</div>
+                <h3>Support Dédié</h3>
+                <p>Équipe commerciale réactive. Conseils personnalisés pour vos besoins spécifiques.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Stats -->
+<section class="stats">
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>500+</h2>
+                <p>Clients Satisfaits</p>
+            </div>
+
+            <div class="stat-item">
+                <h2>15 ans</h2>
+                <p>D'Expérience</p>
+            </div>
+
+            <div class="stat-item">
+                <h2>50k+</h2>
+                <p>Commandes Livrées</p>
+            </div>
+
+            <div class="stat-item">
+                <h2>98%</h2>
+                <p>Taux de Satisfaction</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Témoignages -->
+<section class="testimonials" id="temoignages">
+    <h2 class="section-title">Nos Clients Nous Font Confiance</h2>
+    
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"PUREZZA a transformé notre service. Les verres premium donnent une vraie valeur ajoutée à notre offre. Nos clients adorent !"</p>
+            <p class="testimonial-author">Jean Dupont</p>
+            <p class="testimonial-role">Directeur, Hôtel 4 étoiles - Nîmes</p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Excellente qualité, prix compétitifs et livraison rapide. Le service client est au top. Je recommande fortement !"</p>
+            <p class="testimonial-author">Marie Leclerc</p>
+            <p class="testimonial-role">Gérante, Restaurant Premium - Lyon</p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Nous avons réduit nos coûts de 30% tout en améliorant la qualité perçue. PUREZZA est devenu notre partenaire de confiance."</p>
+            <p class="testimonial-author">Pierre Martin</p>
+            <p class="testimonial-role">Chef d'Établissement, Chaîne Hôtelière</p>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Les verres sont superbes et durables. L'équipe PUREZZA nous aide à choisir la meilleure solution pour nos besoins."</p>
+            <p class="testimonial-author">Sophie Benoit</p>
+            <p class="testimonial-role">Responsable Achat - Brasserie Bretonne</p>
+        </div>
+    </div>
+</section>
+
+<!-- Section Tarifs -->
+<section class="pricing" id="tarifs">
+    <div class="pricing-container">
+        <h2 class="section-title">Nos Offres Tarifaires</h2>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <div class="price">250€</div>
+                <div class="price-period">par commande minimum</div>
+                <ul class="pricing-features">
+                    <li>50 verres minimum</li>
+                    <li>3 types de verres</li>
+                    <li>Livraison standard</li>
+                    <li>Support par email</li>
+                </ul>
+                <button class="btn btn-primary">Commencer</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="plan-name">Professionnel</div>
+                <div class="price">500€</div>
+                <div class="price-period">par mois (contrat)</div>
+                <ul class="pricing-features">
+                    <li>Accès à toute la gamme</li>
+                    <li>Livraisons illimitées</li>
+                    <li>Livraison express</li>
+                    <li>Support prioritaire</li>
+                    <li>10% de réduction</li>
+                    <li>Gestion de stock</li>
+                </ul>
+                <button class="btn btn-primary">Choisir ce Plan</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <div class="price">Personnalisé</div>
+                <div class="price-period">solutions sur mesure</div>
+                <ul class="pricing-features">
+                    <li>Volume illimité</li>
+                    <li>Verres personnalisés</li>
+                    <li>Livraison gratuite</li>
+                    <li>Support 24/7</li>
+                    <li>Tarification négociée</li>
+                    <li>Consultant dédié</li>
+                </ul>
+                <button class="btn btn-secondary">Nous Contacter</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Contact -->
+<section class="contact" id="contact">
+    <h2 class="section-title">Contactez-Nous</h2>
+    
+    <div class="contact-content">
+        <div class="contact-info">
+            <h3>Nos Coordonnées</h3>
+            
+            <div class="contact-item">
+                <strong>📍 Adresse</strong>
+                <p>
+                    PUREZZA<br>
+                    123 Boulevard de la Innovation<br>
+                    34000 Montpellier, France
+                </p>
+            </div>
+
+            <div class="contact-item">
+                <strong>📞 Téléphone</strong>
+                <p>+33 (0)4 67 XX XX XX</p>
+            </div>
+
+            <div class="contact-item">
+                <strong>📧 Email</strong>
+                <p>contact@purezza.fr<br>
+                   commercial@purezza.fr</p>
+            </div>
+
+            <div class="contact-item">
+                <strong>🕐 Horaires</strong>
+                <p>
+                    Lundi - Vendredi : 9h - 18h<br>
+                    Samedi : 9h - 13h<br>
+                    Dimanche : Fermé
+                </p>
+            </div>
+
+            <div class="contact-item">
+                <strong>🌐 Réseaux Sociaux</strong>
+                <p>
+                    <a href="#" style="color:#0a66c2;">LinkedIn</a> | 
+                    <a href="#" style="color:#1f9cf0;">Twitter</a> | 
+                    <a href="#" style="color:#e1306c;">Instagram</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nom Complet *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Établissement *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Type d'Établissement *</label>
+                    <select id="type" name="type" required style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:6px;">
+                        <option value="">Sélectionner...</option>
+                        <option value="hotel">Hôtel</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="bar">Bar/Café</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Votre Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="background:var(--blue);">Envoyer ma Demande</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>À Propos</h3>
+                <ul>
+                    <li><a href="#">Notre Histoire</a></li>
+                    <li><a href="#">Notre Mission</a></li>
+                    <li><a href="#">Notre Équipe</a></li>
+                    <li><a href="#">Carrières</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Produits</h3>
+                <ul>
+                    <li><a href="#">Verres à Vin</a></li>
+                    <li><a href="#">Verres à Cocktails</a></li>
+                    <li><a href="#">Verres Premium</a></li>
+                    <li><a href="#">Catalogue Complet</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Nous Contacter</a></li>
+                    <li><a href="#">Commandes</a></li>
+                    <li><a href="#">Livraison</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Légal</h3>
+                <ul>
+                    <li><a href="#">Conditions Générales</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                    <li><a href="#">Politique de Cookies</a></li>
+                    <li><a href="#">Mentions Légales</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 PUREZZA. Tous droits réservés. | Solutions Premium pour l'Hôtellerie & Restauration</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Gestion du formulaire de contact
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    
+    alert(`Merci ${name}! Votre demande a été envoyée. Nous vous recontacterons à ${email} très rapidement.`);
+    
+    event.target.reset();
+}
+
+// Navigation fluide
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Animation des éléments au scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.querySelectorAll('.product-card, .benefit-item, .testimonial-card, .pricing-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
