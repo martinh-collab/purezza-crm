@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PUREZZA CRM</title>
+
+<style>
+
+:root{
+    --blue:#2563eb;
+    --green:#16a34a;
+    --orange:#f59e0b;
+    --red:#dc2626;
+    --dark:#1e293b;
+    --light:#f8fafc;
+    --card:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+}
+
+body.panel-open{
+    overflow:hidden;
+}
+
+header{
+    background:var(--dark);
+    color:white;
+    padding:20px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.search{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    width:300px;
+}
+
+.search::placeholder{
+    color:#999;
+}
+
+.search:focus{
+    outline:none;
+    box-shadow:0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.container{
+    display:flex;
+    min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+    width:260px;
+    background:white;
+    padding:20px;
+    box-shadow:0 0 15px rgba(0,0,0,.05);
+    overflow-y:auto;
+}
+
+.sidebar h3{
+    margin-bottom:20px;
+}
+
+.menu-item{
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition:.2s;
+    user-select:none;
+}
+
+.menu-item:hover{
+    background:#eff6ff;
+}
+
+.menu-item:focus{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+}
+
+.content{
+    flex:1;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.kpi{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card-kpi{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    transition:transform 0.2s;
+}
+
+.card-kpi:hover{
+    transform:translateY(-2px);
+}
+
+.card-kpi h2{
+    margin-top:10px;
+    color:var(--blue);
+}
+
+.pipeline{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.column{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    min-height:250px;
+}
+
+.column h3{
+    margin-bottom:15px;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:20px;
+    color:white;
+    font-size:12px;
+}
+
+.nouveau{
+    background:var(--blue);
+}
+
+.rdv{
+    background:var(--orange);
+}
+
+.devis{
+    background:var(--green);
+}
+
+.signe{
+    background:#10b981;
+}
+
+.prospect{
+    background:#f8fafc;
+    border-left:5px solid var(--blue);
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+    user-select:none;
+}
+
+.prospect:hover{
+    background:#e2e8f0;
+    transform:translateX(4px);
+}
+
+.prospect:focus{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    cursor:pointer;
+    transition:transform 0.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card:focus{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+}
+
+.score{
+    background:var(--green);
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:10px;
+}
+
+.panel{
+    position:fixed;
+    top:0;
+    right:-500px;
+    width:480px;
+    max-width:100%;
+    height:100%;
+    background:white;
+    transition:.4s;
+    padding:30px;
+    box-shadow:-10px 0 30px rgba(0,0,0,.1);
+    overflow:auto;
+    z-index:1000;
+}
+
+.panel.active{
+    right:0;
+}
+
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.4s;
+    z-index:999;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.close{
+    float:right;
+    font-size:30px;
+    cursor:pointer;
+    color:var(--red);
+    border:none;
+    background:none;
+    padding:0;
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s;
+}
+
+.close:hover{
+    transform:scale(1.2);
+}
+
+.close:focus{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+}
+
+.detail{
+    margin-top:25px;
+    clear:both;
+}
+
+.detail p{
+    margin-bottom:12px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    margin-top:10px;
+    transition:.3s;
+    font-weight:600;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+button:focus{
+    outline:2px solid white;
+    outline-offset:2px;
+}
+
+button:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+    transform:none;
+}
+
+button.loading{
+    position:relative;
+}
+
+button.loading::after{
+    content:'';
+    position:absolute;
+    width:16px;
+    height:16px;
+    top:50%;
+    right:14px;
+    margin-top:-8px;
+    border:2px solid rgba(255,255,255,0.3);
+    border-radius:50%;
+    border-top-color:white;
+    animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.btn-blue{
+    background:var(--blue);
+}
+
+.btn-green{
+    background:var(--green);
+}
+
+.btn-orange{
+    background:var(--orange);
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px){
+    .pipeline{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media (max-width: 768px){
+    header{
+        flex-direction:column;
+        padding:15px;
+    }
+
+    .search{
+        width:100%;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .sidebar.mobile-open{
+        display:block;
+        position:fixed;
+        left:0;
+        top:70px;
+        width:100%;
+        height:calc(100vh - 70px);
+        z-index:998;
+        box-shadow:2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .content{
+        padding:15px;
+    }
+
+    .pipeline{
+        grid-template-columns:1fr;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        width:100%;
+        right:-100%;
+    }
+}
+
+@media (max-width: 480px){
+    .kpi{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        gap:10px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .search{
+        font-size:14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">PUREZZA CRM</div>
+    <input type="text" class="search" placeholder="Rechercher un prospect..." aria-label="Rechercher un prospect">
+</header>
+
+<div class="container">
+
+<div class="sidebar" id="sidebar">
+
+<h3>Menu</h3>
+
+<div class="menu-item" role="button" tabindex="0" aria-label="Accueil">🏠 Dashboard</div>
+<div class="menu-item" role="button" tabindex="0" aria-label="Gestion des hôtels">🏨 Hôtels</div>
+<div class="menu-item" role="button" tabindex="0" aria-label="Gestion des restaurants">🍽 Restaurants</div>
+<div class="menu-item" role="button" tabindex="0" aria-label="Rendez-vous">📅 Rendez-vous</div>
+<div class="menu-item" role="button" tabindex="0" aria-label="Devis">💰 Devis</div>
+<div class="menu-item" role="button" tabindex="0" aria-label="Statistiques">📊 Statistiques</div>
+
+</div>
+
+<div class="content">
+
+<div class="kpi">
+
+<div class="card-kpi">
+    <p>Prospects</p>
+    <h2>421</h2>
+</div>
+
+<div class="card-kpi">
+    <p>RDV planifiés</p>
+    <h2>56</h2>
+</div>
+
+<div class="card-kpi">
+    <p>Devis envoyés</p>
+    <h2>28</h2>
+</div>
+
+<div class="card-kpi">
+    <p>Signatures</p>
+    <h2>12</h2>
+</div>
+
+</div>
+
+<h2 style="margin-bottom:20px;">Pipeline Commercial</h2>
+
+<div class="pipeline">
+
+<div class="column">
+<h3><span class="badge nouveau">Nouveaux</span></h3>
+
+<div class="prospect" role="button" tabindex="0" aria-label="Mas Merlet - Hôtel 4 étoiles à Nîmes" data-prospect="0">
+Mas Merlet
+</div>
+
+<div class="prospect" role="button" tabindex="0" aria-label="Hôtel de France" data-prospect="1">
+Hôtel de France
+</div>
+
+</div>
+
+<div class="column">
+<h3><span class="badge rdv">RDV</span></h3>
+
+<div class="prospect" role="button" tabindex="0" aria-label="La Plage des Artistes" data-prospect="2">
+La Plage des Artistes
+</div>
+
+</div>
+
+<div class="column">
+<h3><span class="badge devis">Devis</span></h3>
+
+<div class="prospect" role="button" tabindex="0" aria-label="Restaurant Le 7" data-prospect="3">
+Restaurant Le 7
+</div>
+
+</div>
+
+<div class="column">
+<h3><span class="badge signe">Signés</span></h3>
+
+<div class="prospect" role="button" tabindex="0" aria-label="Grand Hôtel Avignon" data-prospect="4">
+Grand Hôtel Avignon
+</div>
+
+</div>
+
+</div>
+
+<h2 style="margin-bottom:20px;">Prospects Prioritaires</h2>
+
+<div class="grid">
+
+<div class="card" role="button" tabindex="0" aria-label="Mas Merlet - Hôtel 4 étoiles - Nîmes - Potentiel 92%" data-prospect="0">
+
+<h3>Mas Merlet</h3>
+<p>Nîmes (30)</p>
+<div class="score">Potentiel 92%</div>
+
+</div>
+
+<div class="card" role="button" tabindex="0" aria-label="La Plage des Artistes - Restaurant Premium - Le Grau-du-Roi - Potentiel 88%" data-prospect="2">
+
+<h3>La Plage des Artistes</h3>
+<p>Le Grau-du-Roi</p>
+<div class="score">Potentiel 88%</div>
+
+</div>
+
+<div class="card" role="button" tabindex="0" aria-label="Restaurant Le 7 - Brasserie Premium - Villeneuve-lès-Avignon - Potentiel 81%" data-prospect="3">
+
+<h3>Restaurant Le 7</h3>
+<p>Villeneuve-lès-Avignon</p>
+<div class="score">Potentiel 81%</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="panel" id="panel">
+
+<button class="close" onclick="closeProspect()" aria-label="Fermer le panneau">×</button>
+
+<h2 id="nom"></h2>
+
+<div class="detail">
+
+<p><strong>Type :</strong> <span id="type"></span></p>
+
+<p><strong>Ville :</strong> <span id="ville"></span></p>
+
+<p><strong>Potentiel :</strong> <span id="potentiel"></span></p>
+
+<p><strong>Commercial :</strong> <span id="commercial"></span></p>
+
+<p><strong>Statut :</strong> <span id="statut"></span></p>
+
+<p><strong>Argumentaire PUREZZA :</strong></p>
+
+<p>
+Réduction du coût des bouteilles, amélioration de la démarche RSE,
+meilleure expérience client et gain logistique.
+</p>
+
+<button class="btn-blue" onclick="createRDV()">Créer un RDV</button>
+
+<button class="btn-orange" onclick="sendQuote()">Envoyer un devis</button>
+
+<button class="btn-green" onclick="markSigned()">Marquer comme signé</button>
+
+</div>
+
+</div>
+
+<script>
+
+// Data structure for prospects
+const prospectsData = [
+    {
+        nom: 'Mas Merlet',
+        type: 'Hôtel 4 étoiles',
+        ville: 'Nîmes',
+        potentiel: '92%',
+        commercial: 'Victor Bresson',
+        statut: 'Prospect chaud'
+    },
+    {
+        nom: 'Hôtel de France',
+        type: 'Hôtel 3 étoiles',
+        ville: 'Montpellier',
+        potentiel: '75%',
+        commercial: 'Victor Bresson',
+        statut: 'À contacter'
+    },
+    {
+        nom: 'La Plage des Artistes',
+        type: 'Restaurant Premium',
+        ville: 'Le Grau-du-Roi',
+        potentiel: '88%',
+        commercial: 'Victor Bresson',
+        statut: 'RDV à programmer'
+    },
+    {
+        nom: 'Restaurant Le 7',
+        type: 'Brasserie Premium',
+        ville: 'Villeneuve-lès-Avignon',
+        potentiel: '81%',
+        commercial: 'Victor Bresson',
+        statut: 'Suivi devis'
+    },
+    {
+        nom: 'Grand Hôtel Avignon',
+        type: 'Hôtel 5 étoiles',
+        ville: 'Avignon',
+        potentiel: '95%',
+        commercial: 'Victor Bresson',
+        statut: 'Signé'
+    }
+];
+
+let currentProspectIndex = null;
+
+// Search functionality
+document.querySelector('.search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.prospect, .card');
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+
+// Open prospect panel
+function openProspect(prospectIndex) {
+    const prospect = prospectsData[prospectIndex];
+    
+    document.getElementById("nom").innerText = prospect.nom;
+    document.getElementById("type").innerText = prospect.type;
+    document.getElementById("ville").innerText = prospect.ville;
+    document.getElementById("potentiel").innerText = prospect.potentiel;
+    document.getElementById("commercial").innerText = prospect.commercial;
+    document.getElementById("statut").innerText = prospect.statut;
+    
+    document.getElementById("panel").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+    document.body.classList.add("panel-open");
+    
+    currentProspectIndex = prospectIndex;
+}
+
+// Close prospect panel
+function closeProspect() {
+    document.getElementById("panel").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+    document.body.classList.remove("panel-open");
+    currentProspectIndex = null;
+}
+
+// Handle keyboard navigation
+document.addEventListener('keydown', function(e) {
+    // ESC to close panel
+    if (e.key === 'Escape' && currentProspectIndex !== null) {
+        closeProspect();
+    }
+});
+
+// Click on overlay to close
+document.getElementById("overlay").addEventListener('click', closeProspect);
+
+// Add click and keyboard handlers to prospects
+document.querySelectorAll('.prospect, .card').forEach(element => {
+    element.addEventListener('click', function() {
+        const index = this.getAttribute('data-prospect');
+        if (index !== null) {
+            openProspect(parseInt(index));
+        }
+    });
+    
+    element.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const index = this.getAttribute('data-prospect');
+            if (index !== null) {
+                openProspect(parseInt(index));
+            }
+        }
+    });
+});
+
+// Add keyboard navigation to menu items
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+        }
+    });
+});
+
+// Button actions with loading state
+function createRDV() {
+    const button = event.target;
+    simulateAction(button, 'RDV créé avec succès!');
+}
+
+function sendQuote() {
+    const button = event.target;
+    simulateAction(button, 'Devis envoyé avec succès!');
+}
+
+function markSigned() {
+    const button = event.target;
+    simulateAction(button, 'Prospect marqué comme signé!');
+}
+
+function simulateAction(button, message) {
+    button.disabled = true;
+    button.classList.add('loading');
+    
+    setTimeout(() => {
+        button.disabled = false;
+        button.classList.remove('loading');
+        alert(message);
+    }, 1500);
+}
+
+</script>
+
+</body>
+</html>
